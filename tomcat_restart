@@ -1,0 +1,24 @@
+#!/bin/bash
+
+## take heap dump 
+echo $"taking heap dump"
+ps aux  |  grep -i tomcat  |  awk '{print $2}'  |  xargs sudo kill -3
+
+## sleep 30 seconds
+echo $"Sleeping for 15 seconds"
+sleep 15
+
+## stop tomcat process
+echo $"Stopping Tomcat"
+/opt/tomcat/bin/shutdown.sh
+
+
+## sleep 30 seconds
+#echo $"Sleeping for 30 seconds"
+sleep 15
+
+## start tomcat process
+echo $"Starting Tomcat"
+/opt/tomcat/bin/startup.sh
+
+
